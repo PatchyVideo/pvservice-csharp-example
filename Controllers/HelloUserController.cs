@@ -45,7 +45,7 @@ namespace pvhellouser.Controllers
                 JsonSerializer.Deserialize<SidModel>(json_bytes);
             string sid = sidmodel.sid;
             
-            ConnectionMultiplexer muxer = ConnectionMultiplexer.Connect("192.168.0.54:6379");
+            ConnectionMultiplexer muxer = ConnectionMultiplexer.Connect("redis:6379");
             IDatabase conn = muxer.GetDatabase();
             string ujson = await conn.StringGetAsync(sid);
 
